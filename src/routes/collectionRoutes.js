@@ -8,15 +8,15 @@ const collectionRouter = express.Router();
 collectionRouter.get("/", CollectionController.getAllCollections);
 
 // GET /collections/:id - Obter um Personagem pelo ID
-// collectionRouter.get("/:id", collectionController.getCollectionsById);
+collectionRouter.get("/:id", CollectionController.getCollectionsById);
 
-// // POST /collections - Criar um novo Collections
-// collectionRouter.post("/", collectionController.createCollections);
+// POST /collections - Criar um novo Collections
+collectionRouter.post("/", CollectionController.createCollection);
 
 // // PUT /collections/:id - Atualizar um Collections
-// collectionRouter.put("/:id", collectionController.updateCollections);
+collectionRouter.put("/:id", CollectionController.updateCollection);
 
 // // DELETE /collections/:id - Remover um Collections
-// collectionRouter.delete("/:id", collectionController.deleteCollections);
+collectionRouter.delete("/:id", CollectionController.deleteCollection);
 
 export default collectionRouter;

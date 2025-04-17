@@ -69,6 +69,7 @@ class CollectionController {
 
       // Atualizar o coleção
       const updatedCollection = await CollectionModel.update(
+        id,
         name,
         description,
         releaseYear,
