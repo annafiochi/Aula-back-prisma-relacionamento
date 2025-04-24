@@ -61,13 +61,13 @@ class CollectionController {
     }
   }
 
-  // PUT /api/colecoes/:id
+  // PUT /colecoes/:id
   async updateCollection(req, res) {
     try {
       const { id } = req.params;
       const { name, description, releaseYear } = req.body;
 
-      // Atualizar o coleção
+      // Atualizar a coleção
       const updatedCollection = await CollectionModel.update(
         id,
         name,
