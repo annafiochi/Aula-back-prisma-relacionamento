@@ -3,7 +3,7 @@ import prisma from "../../prisma/prisma.js";
 class CollectionModel {
   // Obter todos as coleções
   async findAll() {
-    const colecoes = await prisma.collection.findMany({
+    const collection = await prisma.collection.findMany({
       orderBy: {
         createdAt: "desc",
       },
@@ -12,20 +12,24 @@ class CollectionModel {
       }
     });
 
-    console.log(colecoes);
+    console.log(collection);
 
-    return colecoes;
+    return collection;
   }
 
   // Obter uma coleção pelo ID
   async findById(id) {
-    const colecao = await prisma.collection.findUnique({
+    const collection = await prisma.collection.findUnique({
       where: {
         id: Number(id),
       },
+      // Traz o cards que estão vinculado
+      include: {
+        cards: true,
+      }
     });
 
-    return colecao;
+    return collection;
   }
 
   // Criar uma nova coleção
@@ -52,9 +56,9 @@ class CollectionModel {
     description,
     releaseYear,
   ) {
-    const colecao = await this.findById(id);
+    const collection = await this.findById(id);
 
-    if (!colecao) {
+    if (!collection) {
       return null;
     }
 
@@ -82,9 +86,9 @@ class CollectionModel {
 
   // Remover uma coleção
   async delete(id) {
-    const colecao = await this.findById(id);
+    const collection = await this.findById(id);
 
-    if (!colecao) {
+    if (!collection) {
       return null;
     }
 

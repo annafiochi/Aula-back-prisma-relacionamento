@@ -1,29 +1,29 @@
 import CollectionModel from "../models/collectionModel.js";
 
 class CollectionController {
-  // GET /api/coleçao
+  // GET /api/coleçoes
   async getAllCollections(req, res) {
     try {
-      const colecoes = await CollectionModel.findAll();
-      res.json(colecoes);
+      const collection = await CollectionModel.findAll();
+      res.json(collection);
     } catch (error) {
       console.error("Erro ao buscar coleções:", error);
       res.status(500).json({ error: "Erro ao buscar coleções" });
     }
   }
 
-  // GET /api/colecao/:id
+  // GET /api/colecoes/:id
   async getCollectionsById(req, res) {
     try {
       const { id } = req.params;
 
-      const colecao = await CollectionModel.findById(id);
+      const collection = await CollectionModel.findById(id);
 
-      if (!colecao) {
+      if (!collection) {
         return res.status(404).json({ error: "Coleção não encontrado" });
       }
 
-      res.json(colecao);
+      res.json(collection);
     } catch (error) {
       console.error("Erro ao buscar coleção:", error);
       res.status(500).json({ error: "Erro ao buscar coleção" });
