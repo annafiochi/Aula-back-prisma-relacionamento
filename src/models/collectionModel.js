@@ -78,7 +78,11 @@ class CollectionModel {
       where: {
         id: Number(id),
       },
-      data,
+      data: {
+        name,
+        description,
+        releaseYear,
+      }
     });
 
     return collectionUpdated;

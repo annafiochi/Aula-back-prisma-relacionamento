@@ -91,14 +91,16 @@ class CollectionController {
     try {
       const { id } = req.params;
 
-      // Remover o coleção
+      // Remover a coleção
       const result = await CollectionModel.delete(id);
 
       if (!result) {
         return res.status(404).json({ error: "Coleção não encontrado" });
       }
 
-      res.status(204).end(); // Resposta sem conteúdo
+      res.status(200).json({
+        message: "Coleção removida com sucesso",
+      });
     } catch (error) {
       console.error("Erro ao remover coleção:", error);
       res.status(500).json({ error: "Erro ao remover coleção" });
