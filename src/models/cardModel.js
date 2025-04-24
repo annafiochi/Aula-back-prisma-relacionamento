@@ -8,7 +8,16 @@ class CardModel {
         createdAt: "desc",
       },
       include: {
-        collection: true,
+        collection: {
+          // Seleciona os campos que deseja trazer da coleção
+          // Se não colocar o select, ele traz todos os campos da coleção
+          select: {
+            id: true,
+            name: true,
+            description: true,
+            releaseYear: true,
+          }
+        },
       },
     });
 
