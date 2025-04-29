@@ -1,4 +1,4 @@
-import prisma from "../../prisma.js";
+import prisma from "../../prisma/prisma.js";
 
 class UserModel {
   // Obter todos os usuários
@@ -28,7 +28,7 @@ class UserModel {
 
     return user;
   }
-  
+
   // Criar um novo usuário
   async create(data) {
     const user = await prisma.user.create({
