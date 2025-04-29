@@ -18,7 +18,17 @@ class UserModel {
 
     return user;
   }
+  //oobter um usuario pelo email dele
+  async findByEmail(email) {
+    const user = await prisma.user.findUnique({
+      where: {
+        email,
+      },
+    });
 
+    return user;
+  }
+  
   // Criar um novo usuário
   async create(data) {
     const user = await prisma.user.create({
