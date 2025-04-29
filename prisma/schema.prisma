@@ -62,7 +62,7 @@ model Collection {
 model Card {
   id            Int        @id @default(autoincrement())
   name          String     @unique
-  rarity        String
+  rarity        String 
   attackPoints  Int
   defensePoints Int
   imageUrl      String?
@@ -75,4 +75,17 @@ model Card {
   updatedAt DateTime @updatedAt
 
   @@map("cards")
+}
+
+
+model User {
+  id          Int     @id @default(autoincrement())
+  name        String
+  email       String  @unique
+  password    String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
 }
